@@ -21,6 +21,8 @@ public class Employee extends Sample implements Cloneable {
 	private Date joiningDate;
 
 	private Set<String> hobbies;
+	
+	private String designation;
 
 	// if we using static only it can be changed but it allocates only one
 	// memory for all instance of classes
@@ -68,9 +70,34 @@ public class Employee extends Sample implements Cloneable {
 		this.hobbies = hobbies;
 	}
 
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
 	public String getPosition() {
 		return position;
 	}
+	
+	public void retriveByDesignation(Set<Employee> set1, String desgn) {
+		for (Employee e : set1) {
+			if(e.getDesignation().equals(desgn)) {
+				System.out.println(e.getId());
+				System.out.println(e.getName());
+				System.out.println(e.getHobbies());
+				System.out.println(e.getDesignation());
+				System.out.println(e.getJoiningDate());
+				System.out.println(e.getSalary());
+				System.out.println(e.getPosition());
+			}
+				
+			}
+	}
+				
+			
 
 	public void retrive(Set<Employee> set1) {
 
@@ -219,10 +246,44 @@ public class Employee extends Sample implements Cloneable {
 
 	}
 
+	
+	/*public Object mapkey(Object obj) {
+		Employee emp = (Employee) obj;
+			emp.getId();
+			emp.getDesignation();
+			return emp;
+	}*/
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((designation == null) ? 0 : designation.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		if (designation == null) {
+			if (other.designation != null)
+				return false;
+		} else if (!designation.equals(other.designation))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }

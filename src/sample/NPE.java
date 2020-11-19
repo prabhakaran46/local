@@ -19,19 +19,35 @@ public class NPE {
 		Employee obj1 = new Employee();
 		obj1.setId(1);
 		obj1.setName("XXX");
+		obj1.setDesignation("Tester");
 		obj1.setSalary(new BigDecimal("10000.00"));
 		obj1.setJoiningDate(date);
 		obj1.setHobbies(hobbies);
 		
 		Employee obj2 = new Employee();
+		Employee keyobj2 =new Employee();
 		obj2.setId(2);
+		keyobj2.setId(2);
 		obj2.setName("YYY");
+		obj2.setDesignation("Developer");
+		keyobj2.setDesignation("Developer");
 		obj2.setSalary(new BigDecimal("11000.00"));
 		obj2.setJoiningDate(date);
 		obj2.setHobbies(hobbies);
+		//Employee ob= new Employee();
+		//ob.mapkey(obj2);
+	//	Employee emp=new Employee();
+		
+		//Defining key value as user defined type
+		HashMap<Employee,Employee> map1=new HashMap<>();
+		map1.put(keyobj2,obj2);
+		//emp.retrivemap(map1);
+		
+		
 		Employee obj3 = new Employee();
 		obj3.setId(3);
 		obj3.setName("ZZZ");
+		obj3.setDesignation("Developer");
 		obj3.setSalary(new BigDecimal("12000.00"));
 		obj3.setJoiningDate(date);
 		obj3.setHobbies(hobbies);
@@ -58,8 +74,15 @@ public class NPE {
 		//obj4.modify(set1,obj1,obj3);
 		//obj4.delete(set1, obj2);
 		//obj4.retrive(set1);
+		obj4.retriveByDesignation(set1, "Developer");
 		obj4.SampleInterface();
 		obj4.SampleInterface("SampleInterface");
+		
+	//	public void addNewEmployee(Integer id,String name,BigDecimal salary,Date joiningDate,Set<String> hobbie,String designation) {
+			
+		//}
+		
+	
 		
 		HashMap<Integer, Employee> map = new HashMap<>();
 		map.put(obj1.getId(), obj1);
